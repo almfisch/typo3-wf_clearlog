@@ -1,0 +1,1 @@
+Easy clear some db-tables
