@@ -96,7 +96,7 @@ class  tx_wfclearlog_module1 extends t3lib_SCbase {
 
 							// Draw the header.
 						//$this->doc = t3lib_div::makeInstance('noDoc');
-						$this->doc = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('noDoc');
+						$this->doc = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Template\\DocumentTemplate');
 						$this->doc->backPath = $BACK_PATH;
 						$this->doc->form='<form action="" method="post" enctype="multipart/form-data">';
 
@@ -139,7 +139,7 @@ class  tx_wfclearlog_module1 extends t3lib_SCbase {
 							// If no access or if ID == zero
 
 						//$this->doc = t3lib_div::makeInstance('noDoc');
-						$this->doc = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('noDoc');
+						$this->doc = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Template\\DocumentTemplate');
 						$this->doc->backPath = $BACK_PATH;
 
 						$this->content.=$this->doc->startPage($LANG->getLL('title'));
@@ -174,16 +174,28 @@ class  tx_wfclearlog_module1 extends t3lib_SCbase {
 						$GLOBALS['TYPO3_DB']->sql_query('TRUNCATE TABLE sys_log');
 						$GLOBALS['TYPO3_DB']->sql_query('TRUNCATE TABLE sys_history');
 						$GLOBALS['TYPO3_DB']->sql_query('TRUNCATE TABLE tx_extensionmanager_domain_model_extension');
+						$GLOBALS['TYPO3_DB']->sql_query('TRUNCATE TABLE cache_imagesizes');
+						$GLOBALS['TYPO3_DB']->sql_query('TRUNCATE TABLE sys_file_processedfile');
 					}
 
 					$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', 'sys_log', '');
 					$countLog = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
 					$GLOBALS['TYPO3_DB']->sql_free_result($res);
+					
 					$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', 'sys_history', '');
 					$countHistory = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
 					$GLOBALS['TYPO3_DB']->sql_free_result($res);
+					
 					$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', 'tx_extensionmanager_domain_model_extension', '');
 					$countExtensions = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
+					$GLOBALS['TYPO3_DB']->sql_free_result($res);
+					
+					$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', 'cache_imagesizes', '');
+					$countImgSizes = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
+					$GLOBALS['TYPO3_DB']->sql_free_result($res);
+					
+					$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', 'sys_file_processedfile', '');
+					$countProcessedFile = $GLOBALS['TYPO3_DB']->sql_num_rows($res);
 					$GLOBALS['TYPO3_DB']->sql_free_result($res);
 
 					$res = $GLOBALS['TYPO3_DB']->sql_query('SHOW TABLE STATUS');
@@ -196,10 +208,16 @@ class  tx_wfclearlog_module1 extends t3lib_SCbase {
 					$sizeLog = $tables['sys_log'];
 					$sizeHistory = $tables['sys_history'];
 					$sizeExtensions = $tables['tx_extensionmanager_domain_model_extension'];
+					$sizeImgSizes = $tables['cache_imagesizes'];
+					$sizeProcessedFile = $tables['sys_file_processedfile'];
 
 					$content = '<b>sys_log:</b> ' . $countLog . ' (' . $sizeLog . ' KiB)';
 					$content .= '<br />';
 					$content .= '<b>sys_history:</b> ' . $countHistory . ' (' . $sizeHistory . ' KiB)';
+					$content .= '<br />';
+					$content .= '<b>sys_file_processedfile:</b> ' . $countProcessedFile . ' (' . $sizeProcessedFile . ' KiB)';
+					$content .= '<br />';
+					$content .= '<b>cache_imagesizes:</b> ' . $countImgSizes . ' (' . $sizeImgSizes . ' KiB)';
 					$content .= '<br />';
 					$content .= '<b>tx_extensionmanager_domain_model_extension:</b> ' . $countExtensions . ' (' . $sizeExtensions . ' KiB)';
 

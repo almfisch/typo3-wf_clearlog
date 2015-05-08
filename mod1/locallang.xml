@@ -7,16 +7,16 @@
 	<data type="array">
 		<languageKey index="default" type="array">
 			<label index="title">wfClearLog</label>
-			<label index="description">Clears sys_log, sys_history and tx_extensionmanager_domain_model_extension</label>
-			<label index="longdescription">The tables sys_log, sys_history and tx_extensionmanager_domain_model_extension getting larger over time. This extension clears the tables. Infos about Backend-User Logins and Object-History get lost.</label>
+			<label index="description">Clears some database-tables</label>
+			<label index="longdescription">Some tables getting larger over time. This extension clears the tables. Infos about Backend-User Logins and Object-History get lost.</label>
 			<label index="function1">Information</label>
 			<label index="function2">Clear Tables</label>
 			<label index="warning">Warning: Be Careful!!!</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="title">wfClearLog</label>
-			<label index="description">Leert sys_log, sys_history und tx_extensionmanager_domain_model_extension</label>
-			<label index="longdescription">Die drei Tabellen sys_log, sys_history und tx_extensionmanager_domain_model_extension werden im Laufe der Zeit immer groesser. Diese Erweiterung leert die beiden Tabellen. Dadurch gehen die protokollierten Logins der Backend-User und der Erstellungsverlauf von Objekten verloren. Auf das Frontend hat ein leeren der beiden Tabellen keinen Einfluss.</label>
+			<label index="description">Leert einige Datenbank-Tabellen</label>
+			<label index="longdescription">Manche Tabellen werden im Laufe der Zeit immer groesser. Diese Erweiterung leert die Tabellen. Dadurch gehen die protokollierten Logins der Backend-User und der Erstellungsverlauf von Objekten verloren. Auf das Frontend hat ein leeren der Tabellen keinen Einfluss.</label>
 			<label index="function1">Information</label>
 			<label index="function2">Tabellen leeren</label>
 			<label index="warning">Warnung: Mit Vorsicht zu benutzen!!!</label>

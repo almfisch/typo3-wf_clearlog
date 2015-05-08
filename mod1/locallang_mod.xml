@@ -7,13 +7,13 @@
 	<data type="array">
 		<languageKey index="default" type="array">
 			<label index="mlang_tabs_tab">wfClearLog</label>
-			<label index="mlang_labels_tabdescr">Clears tables sys_log, sys_history and tx_extensionmanager_domain_model_extension</label>
-			<label index="mlang_labels_tablabel">Clears tables sys_log, sys_history and tx_extensionmanager_domain_model_extension</label>
+			<label index="mlang_labels_tabdescr">Clears some database-tables</label>
+			<label index="mlang_labels_tablabel">Clears some database-tables</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="mlang_tabs_tab">wfClearLog</label>
-			<label index="mlang_labels_tabdescr">Leert die Tabellen sys_log, sys_history und tx_extensionmanager_domain_model_extension</label>
-			<label index="mlang_labels_tablabel">Leert die Tabellen sys_log, sys_history und tx_extensionmanager_domain_model_extension</label>
+			<label index="mlang_labels_tabdescr">Leert einige Datenbank-Tabellen</label>
+			<label index="mlang_labels_tablabel">Leert einige Datenbank-Tabellen</label>
 		</languageKey>
 	</data>
 </T3locallang>
